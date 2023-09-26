@@ -15,7 +15,7 @@ void setup() {
 }
 
 void draw() {
-	location.addVector(velocity);
+	location.add(velocity);
 
 	if ((location.x > width) || location.x < 0) {
 		velocity.x = velocity.x * -1;

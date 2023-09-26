@@ -7,8 +7,17 @@ class Vector2D {
 		y = _y;
 	}
 
-	void addVector(Vector2D v) {
+	void add(Vector2D v) {
 		x = x + v.x;
 		y = y + v.y;
 	}
+
+	void sub(Vector2D) {
+		x = x - v.x;
+		y = y - v.y;
+	}
+
+	void mult(float n) {
+		x = x * n;
+		y = y * n;
 }
