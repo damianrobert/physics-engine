@@ -5,44 +5,50 @@ class Mover {
 	PVector acceleration;
 
 	float topspeed;
+	float mass;
 
 	Mover(PVector _location, PVector _velocity, PVector _acceleration, float _topspeed) {
 		location = new PVector(_location.x, _location.y);
 		velocity = new PVector(_velocity.x, _velocity.y);
 		acceleration = new PVector(_acceleration.x, _acceleration.y);
 		topspeed = _topspeed;
+		mass = 1;
 	}
 	
 	void update() {
-		PVector mouse = new PVector(mouseX, mouseY);
-		PVector dir = PVector.sub(mouse, location);
-
-		dir.normalize();
-		dir.mult(0.5);
-		acceleration = dir;
 
 		velocity.add(acceleration);
 		velocity.limit(topspeed);
 		location.add(velocity);
+		acceleration.mult(0);
 	}
 
 	void display() {
 		stroke(0);
 		fill(175);
-		ellipse(location.x, location.y, 16, 16);
+		ellipse(location.x, location.y, mass * 16, mass * 16);
+	}
+
+	void applyForce(PVector force) {
+		PVector f = PVector.div(force, mass);
+		acceleration.add(f);
 	}
 
 	void checkEdges() {
 		if(location.x > width) {
-			location.x = 0;
-		} else if (location.x < 0) {
 			location.x = width;
+			velocity.x *= -1;
+		} else if (location.x < 0) {
+			velocity.x *= -1;
+			location.x = 0;
 		}
 
 		if(location.y > height) {
-			location.y = 0;
-		} else if (location.y < 0) {
+			velocity.y *= -1;
 			location.y = height;
+		} else if (location.y < 0) {
+			velocity.y *= -1;
+			location.y = 0;
 		}
 	}
 }
