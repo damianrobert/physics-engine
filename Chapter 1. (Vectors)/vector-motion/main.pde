@@ -14,5 +14,6 @@ void draw() {
 	mover.update();
 	mover.checkEdges();
 	mover.display();
-	mover.velocity.x += 0.01;
+  //increase speed gradualy
+	//mover.velocity.x += 0.01;
 }
