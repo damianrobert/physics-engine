@@ -7,12 +7,12 @@ class Mover {
 	float topspeed;
 	float mass;
 
-	Mover(PVector _location, PVector _velocity, PVector _acceleration, float _topspeed) {
+	Mover(PVector _location, PVector _velocity, PVector _acceleration, float _topspeed, float _mass) {
 		location = new PVector(_location.x, _location.y);
 		velocity = new PVector(_velocity.x, _velocity.y);
 		acceleration = new PVector(_acceleration.x, _acceleration.y);
 		topspeed = _topspeed;
-		mass = 1;
+		mass = _mass;
 	}
 	
 	void update() {
@@ -20,6 +20,7 @@ class Mover {
 		velocity.add(acceleration);
 		velocity.limit(topspeed);
 		location.add(velocity);
+		//we reset acceleration to 0 each frame to prevent building up speed
 		acceleration.mult(0);
 	}
 

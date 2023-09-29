@@ -7,12 +7,13 @@ PVector wind;
 
 void setup() {
 	size(630, 500);
+	float mass = 10;
 	location = new PVector(width / 2, height / 2);
 	velocity = new PVector(0, 0);
 	acceleration = new PVector(0, 0);
-	gravity = new PVector(0, 0.1);
+	gravity = new PVector(0, 0.1 * mass);
 	wind = new PVector(0.1, 0);
-	mover = new Mover(location, velocity, acceleration, 5);
+	mover = new Mover(location, velocity, acceleration, 5, mass);
 }
 
 void draw() {
