@@ -20,5 +20,4 @@ void draw() {
 	mover.update();
 	mover.checkEdges();
 	mover.display();
-	println(mover.velocity.x, mover.velocity.y);
 }
